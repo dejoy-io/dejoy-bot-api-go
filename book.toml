@@ -1,0 +1,9 @@
+[book]
+authors = ["Syfaro"]
+language = "en"
+multilingual = false
+src = "docs"
+title = "Go Dejoy Bot API"
+
+[output.html]
+git-repository-url = "https://github.com/dejoy/dejoy-bot-api"
