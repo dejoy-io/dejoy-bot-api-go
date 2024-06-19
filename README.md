@@ -31,7 +31,7 @@ package main
 import (
 	"log"
 
-	djbotapi "github.com/dejoy-io/dejoy-bot-api"
+	djbotapi "github.com/dejoy-io/dejoy-bot-api-go"
 )
 
 func main() {
