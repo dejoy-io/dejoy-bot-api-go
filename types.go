@@ -242,7 +242,7 @@ func (u *User) String() string {
 // Chat represents a chat.
 type Chat struct {
 	// ID is a unique identifier for this chat
-	ID int64 `json:"id"`
+	ID string `json:"id"`
 	// Type of chat, can be either “private”, “group”, “supergroup” or “channel”
 	Type string `json:"type"`
 	// Title for supergroups, channels and group chats
@@ -324,7 +324,7 @@ type Chat struct {
 	// and channel chats.
 	//
 	// optional
-	LinkedChatID int64 `json:"linked_chat_id,omitempty"`
+	LinkedChatID string `json:"linked_chat_id,omitempty"`
 	// Location is for supergroups, the location to which the supergroup is
 	// connected. Returned only in getChat.
 	//
@@ -570,7 +570,7 @@ type Message struct {
 	// or double-precision float type are safe for storing this identifier;
 	//
 	// optional
-	MigrateToChatID int64 `json:"migrate_to_chat_id,omitempty"`
+	MigrateToChatID string `json:"migrate_to_chat_id,omitempty"`
 	// MigrateFromChatID is the supergroup has been migrated from a group with the specified identifier.
 	// This number may be greater than 32 bits and some programming languages
 	// may have difficulty/silent defects in interpreting it.
@@ -578,7 +578,7 @@ type Message struct {
 	// or double-precision float type are safe for storing this identifier;
 	//
 	// optional
-	MigrateFromChatID int64 `json:"migrate_from_chat_id,omitempty"`
+	MigrateFromChatID string `json:"migrate_from_chat_id,omitempty"`
 	// PinnedMessage is a specified message was pinned.
 	// Note that the Message object in this field will not contain further ReplyToMessage
 	// fields even if it is itself a reply;
@@ -1833,7 +1833,7 @@ type BotCommand struct {
 // specific (or no) fields.
 type BotCommandScope struct {
 	Type   string `json:"type"`
-	ChatID int64  `json:"chat_id,omitempty"`
+	ChatID string `json:"chat_id,omitempty"`
 	UserID int64  `json:"user_id,omitempty"`
 }
 
@@ -1856,7 +1856,7 @@ type ResponseParameters struct {
 	// The group has been migrated to a supergroup with the specified identifier.
 	//
 	// optional
-	MigrateToChatID int64 `json:"migrate_to_chat_id,omitempty"`
+	MigrateToChatID string `json:"migrate_to_chat_id,omitempty"`
 	// In case of exceeding flood control, the number of seconds left to wait
 	// before the request can be repeated.
 	//

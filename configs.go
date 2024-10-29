@@ -264,7 +264,7 @@ func (CloseConfig) params() (Params, error) {
 
 // BaseChat is base type for all chat config types.
 type BaseChat struct {
-	ChatID                   int64 // required
+	ChatID                   string // required
 	ChannelUsername          string
 	ProtectContent           bool
 	ReplyToMessageID         int
@@ -299,7 +299,7 @@ func (file BaseFile) params() (Params, error) {
 
 // BaseEdit is base type of all chat edits.
 type BaseEdit struct {
-	ChatID          int64
+	ChatID          string
 	ChannelUsername string
 	MessageID       int
 	InlineMessageID string
@@ -351,7 +351,7 @@ func (config MessageConfig) method() string {
 // ForwardConfig contains information about a ForwardMessage request.
 type ForwardConfig struct {
 	BaseChat
-	FromChatID          int64 // required
+	FromChatID          string // required
 	FromChannelUsername string
 	MessageID           int // required
 }
@@ -362,7 +362,7 @@ func (config ForwardConfig) params() (Params, error) {
 		return params, err
 	}
 
-	params.AddNonZero64("from_chat_id", config.FromChatID)
+	params.AddNonEmpty("from_chat_id", config.FromChatID)
 	params.AddNonZero("message_id", config.MessageID)
 
 	return params, nil
@@ -375,7 +375,7 @@ func (config ForwardConfig) method() string {
 // CopyMessageConfig contains information about a copyMessage request.
 type CopyMessageConfig struct {
 	BaseChat
-	FromChatID          int64
+	FromChatID          string
 	FromChannelUsername string
 	MessageID           int
 	Caption             string
@@ -1481,7 +1481,7 @@ func (config UnbanChatSenderChatConfig) params() (Params, error) {
 
 // ChatConfig contains information about getting information on a chat.
 type ChatConfig struct {
-	ChatID             int64
+	ChatID             string
 	SuperGroupUsername string
 }
 
@@ -1831,7 +1831,7 @@ func (config PreCheckoutConfig) params() (Params, error) {
 // DeleteMessageConfig contains information of a message in a chat to delete.
 type DeleteMessageConfig struct {
 	ChannelUsername string
-	ChatID          int64
+	ChatID          string
 	MessageID       int
 }
 
@@ -1850,7 +1850,7 @@ func (config DeleteMessageConfig) params() (Params, error) {
 
 // PinChatMessageConfig contains information of a message in a chat to pin.
 type PinChatMessageConfig struct {
-	ChatID              int64
+	ChatID              string
 	ChannelUsername     string
 	MessageID           int
 	DisableNotification bool
@@ -1874,7 +1874,7 @@ func (config PinChatMessageConfig) params() (Params, error) {
 //
 // If MessageID is not specified, it will unpin the most recent pin.
 type UnpinChatMessageConfig struct {
-	ChatID          int64
+	ChatID          string
 	ChannelUsername string
 	MessageID       int
 }
@@ -1895,7 +1895,7 @@ func (config UnpinChatMessageConfig) params() (Params, error) {
 // UnpinAllChatMessagesConfig contains information of all messages to unpin in
 // a chat.
 type UnpinAllChatMessagesConfig struct {
-	ChatID          int64
+	ChatID          string
 	ChannelUsername string
 }
 
@@ -1929,7 +1929,7 @@ func (config SetChatPhotoConfig) files() []RequestFile {
 
 // DeleteChatPhotoConfig allows you to delete a group, supergroup, or channel's photo.
 type DeleteChatPhotoConfig struct {
-	ChatID          int64
+	ChatID          string
 	ChannelUsername string
 }
 
@@ -1947,7 +1947,7 @@ func (config DeleteChatPhotoConfig) params() (Params, error) {
 
 // SetChatTitleConfig allows you to set the title of something other than a private chat.
 type SetChatTitleConfig struct {
-	ChatID          int64
+	ChatID          string
 	ChannelUsername string
 
 	Title string
@@ -1968,7 +1968,7 @@ func (config SetChatTitleConfig) params() (Params, error) {
 
 // SetChatDescriptionConfig allows you to set the description of a supergroup or channel.
 type SetChatDescriptionConfig struct {
-	ChatID          int64
+	ChatID          string
 	ChannelUsername string
 
 	Description string
@@ -2224,7 +2224,7 @@ func (config DeleteChatStickerSetConfig) params() (Params, error) {
 //
 // Media consist of InputMedia items (InputMediaPhoto, InputMediaVideo).
 type MediaGroupConfig struct {
-	ChatID          int64
+	ChatID          string
 	ChannelUsername string
 
 	Media               []interface{}
