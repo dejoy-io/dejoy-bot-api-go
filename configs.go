@@ -13,9 +13,9 @@ import (
 const (
 	// APIEndpoint is the endpoint for all API methods,
 	// with formatting for Sprintf.
-	APIEndpoint = "https://api.dejoy.io/bot%s/%s"
+	APIEndpoint = "https://api.m.openweb3.io/bot%s/%s"
 	// FileEndpoint is the endpoint for downloading a file from Dejoy.
-	FileEndpoint = "https://api.dejoy.io/file/bot%s/%s"
+	FileEndpoint = "https://api.m.openweb3.io/file/bot%s/%s"
 )
 
 // Constant values for ChatActions
