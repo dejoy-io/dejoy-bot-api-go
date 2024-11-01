@@ -72,7 +72,7 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/dejoy-io/dejoy-bot-api"
+	"github.com/dejoy-io/dejoy-bot-api-go"
 )
 
 func main() {
