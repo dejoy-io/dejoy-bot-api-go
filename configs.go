@@ -267,7 +267,8 @@ type BaseChat struct {
 	ChatID                   string // required
 	ChannelUsername          string
 	ProtectContent           bool
-	ReplyToMessageID         int
+	ReplyToMessageID         string
+	MessageThreadId          string
 	ReplyMarkup              interface{}
 	DisableNotification      bool
 	AllowSendingWithoutReply bool
@@ -277,7 +278,8 @@ func (chat *BaseChat) params() (Params, error) {
 	params := make(Params)
 
 	params.AddFirstValid("chat_id", chat.ChatID, chat.ChannelUsername)
-	params.AddNonZero("reply_to_message_id", chat.ReplyToMessageID)
+	params.AddNonEmpty("reply_to_message_id", chat.ReplyToMessageID)
+	params.AddNonEmpty("message_thread_id", chat.MessageThreadId)
 	params.AddBool("disable_notification", chat.DisableNotification)
 	params.AddBool("allow_sending_without_reply", chat.AllowSendingWithoutReply)
 	params.AddBool("protect_content", chat.ProtectContent)
@@ -301,7 +303,7 @@ func (file BaseFile) params() (Params, error) {
 type BaseEdit struct {
 	ChatID          string
 	ChannelUsername string
-	MessageID       int
+	MessageID       string
 	InlineMessageID string
 	ReplyMarkup     *InlineKeyboardMarkup
 }
@@ -313,7 +315,7 @@ func (edit BaseEdit) params() (Params, error) {
 		params["inline_message_id"] = edit.InlineMessageID
 	} else {
 		params.AddFirstValid("chat_id", edit.ChatID, edit.ChannelUsername)
-		params.AddNonZero("message_id", edit.MessageID)
+		params.AddNonEmpty("message_id", edit.MessageID)
 	}
 
 	err := params.AddInterface("reply_markup", edit.ReplyMarkup)
@@ -353,7 +355,7 @@ type ForwardConfig struct {
 	BaseChat
 	FromChatID          string // required
 	FromChannelUsername string
-	MessageID           int // required
+	MessageID           string // required
 }
 
 func (config ForwardConfig) params() (Params, error) {
@@ -363,7 +365,7 @@ func (config ForwardConfig) params() (Params, error) {
 	}
 
 	params.AddNonEmpty("from_chat_id", config.FromChatID)
-	params.AddNonZero("message_id", config.MessageID)
+	params.AddNonEmpty("message_id", config.MessageID)
 
 	return params, nil
 }
@@ -377,7 +379,7 @@ type CopyMessageConfig struct {
 	BaseChat
 	FromChatID          string
 	FromChannelUsername string
-	MessageID           int
+	MessageID           string
 	Caption             string
 	ParseMode           string
 	CaptionEntities     []MessageEntity
@@ -390,7 +392,7 @@ func (config CopyMessageConfig) params() (Params, error) {
 	}
 
 	params.AddFirstValid("from_chat_id", config.FromChatID, config.FromChannelUsername)
-	params.AddNonZero("message_id", config.MessageID)
+	params.AddNonEmpty("message_id", config.MessageID)
 	params.AddNonEmpty("caption", config.Caption)
 	params.AddNonEmpty("parse_mode", config.ParseMode)
 	err = params.AddInterface("caption_entities", config.CaptionEntities)
@@ -1832,7 +1834,7 @@ func (config PreCheckoutConfig) params() (Params, error) {
 type DeleteMessageConfig struct {
 	ChannelUsername string
 	ChatID          string
-	MessageID       int
+	MessageID       string
 }
 
 func (config DeleteMessageConfig) method() string {
@@ -1843,7 +1845,7 @@ func (config DeleteMessageConfig) params() (Params, error) {
 	params := make(Params)
 
 	params.AddFirstValid("chat_id", config.ChatID, config.ChannelUsername)
-	params.AddNonZero("message_id", config.MessageID)
+	params.AddNonEmpty("message_id", config.MessageID)
 
 	return params, nil
 }
@@ -1852,7 +1854,7 @@ func (config DeleteMessageConfig) params() (Params, error) {
 type PinChatMessageConfig struct {
 	ChatID              string
 	ChannelUsername     string
-	MessageID           int
+	MessageID           string
 	DisableNotification bool
 }
 
@@ -1864,7 +1866,7 @@ func (config PinChatMessageConfig) params() (Params, error) {
 	params := make(Params)
 
 	params.AddFirstValid("chat_id", config.ChatID, config.ChannelUsername)
-	params.AddNonZero("message_id", config.MessageID)
+	params.AddNonEmpty("message_id", config.MessageID)
 	params.AddBool("disable_notification", config.DisableNotification)
 
 	return params, nil
@@ -1876,7 +1878,7 @@ func (config PinChatMessageConfig) params() (Params, error) {
 type UnpinChatMessageConfig struct {
 	ChatID          string
 	ChannelUsername string
-	MessageID       int
+	MessageID       string
 }
 
 func (config UnpinChatMessageConfig) method() string {
@@ -1887,7 +1889,7 @@ func (config UnpinChatMessageConfig) params() (Params, error) {
 	params := make(Params)
 
 	params.AddFirstValid("chat_id", config.ChatID, config.ChannelUsername)
-	params.AddNonZero("message_id", config.MessageID)
+	params.AddNonEmpty("message_id", config.MessageID)
 
 	return params, nil
 }

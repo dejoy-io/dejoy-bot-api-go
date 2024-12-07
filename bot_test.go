@@ -13,7 +13,7 @@ const (
 	ChatID                  = "76918703"
 	Channel                 = "@djbotapitest"
 	SupergroupChatID        = "-1001120141283"
-	ReplyToMessageID        = 35
+	ReplyToMessageID        = "35"
 	ExistingPhotoFileID     = "AgACAgIAAxkDAAEBFUZhIALQ9pZN4BUe8ZSzUU_2foSo1AACnrMxG0BucEhezsBWOgcikQEAAwIAA20AAyAE"
 	ExistingDocumentFileID  = "BQADAgADOQADjMcoCcioX1GrDvp3Ag"
 	ExistingAudioFileID     = "BQADAgADRgADjMcoCdXg3lSIN49lAg"

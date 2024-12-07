@@ -360,7 +360,7 @@ func (c Chat) ChatConfig() ChatConfig {
 // Message represents a message.
 type Message struct {
 	// MessageID is a unique message identifier inside this chat
-	MessageID int `json:"message_id"`
+	MessageID string `json:"message_id"`
 	// From is a sender, empty for messages sent to channels;
 	//
 	// optional
@@ -707,7 +707,7 @@ func (m *Message) CommandArguments() string {
 
 // MessageID represents a unique message identifier.
 type MessageID struct {
-	MessageID int `json:"message_id"`
+	MessageID string `json:"message_id"`
 }
 
 // MessageEntity represents one special entity in a text message.

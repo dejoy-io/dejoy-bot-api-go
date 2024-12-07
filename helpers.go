@@ -18,7 +18,7 @@ func NewMessage(chatID string, text string) MessageConfig {
 	return MessageConfig{
 		BaseChat: BaseChat{
 			ChatID:           chatID,
-			ReplyToMessageID: 0,
+			ReplyToMessageID: "0",
 		},
 		Text:                  text,
 		DisableWebPagePreview: false,
@@ -26,7 +26,7 @@ func NewMessage(chatID string, text string) MessageConfig {
 }
 
 // NewDeleteMessage creates a request to delete a message.
-func NewDeleteMessage(chatID string, messageID int) DeleteMessageConfig {
+func NewDeleteMessage(chatID, messageID string) DeleteMessageConfig {
 	return DeleteMessageConfig{
 		ChatID:    chatID,
 		MessageID: messageID,
@@ -51,7 +51,7 @@ func NewMessageToChannel(username string, text string) MessageConfig {
 //
 // chatID is where to send it, fromChatID is the source chat,
 // and messageID is the ID of the original message.
-func NewForward(chatID string, fromChatID string, messageID int) ForwardConfig {
+func NewForward(chatID string, fromChatID string, messageID string) ForwardConfig {
 	return ForwardConfig{
 		BaseChat:   BaseChat{ChatID: chatID},
 		FromChatID: fromChatID,
@@ -63,7 +63,7 @@ func NewForward(chatID string, fromChatID string, messageID int) ForwardConfig {
 //
 // chatID is where to send it, fromChatID is the source chat,
 // and messageID is the ID of the original message.
-func NewCopyMessage(chatID string, fromChatID string, messageID int) CopyMessageConfig {
+func NewCopyMessage(chatID string, fromChatID string, messageID string) CopyMessageConfig {
 	return CopyMessageConfig{
 		BaseChat:   BaseChat{ChatID: chatID},
 		FromChatID: fromChatID,
@@ -564,7 +564,7 @@ func NewInlineQueryResultVenue(id, title, address string, latitude, longitude fl
 }
 
 // NewEditMessageText allows you to edit the text of a message.
-func NewEditMessageText(chatID string, messageID int, text string) EditMessageTextConfig {
+func NewEditMessageText(chatID string, messageID string, text string) EditMessageTextConfig {
 	return EditMessageTextConfig{
 		BaseEdit: BaseEdit{
 			ChatID:    chatID,
@@ -575,7 +575,7 @@ func NewEditMessageText(chatID string, messageID int, text string) EditMessageTe
 }
 
 // NewEditMessageTextAndMarkup allows you to edit the text and reply markup of a message.
-func NewEditMessageTextAndMarkup(chatID string, messageID int, text string, replyMarkup InlineKeyboardMarkup) EditMessageTextConfig {
+func NewEditMessageTextAndMarkup(chatID string, messageID string, text string, replyMarkup InlineKeyboardMarkup) EditMessageTextConfig {
 	return EditMessageTextConfig{
 		BaseEdit: BaseEdit{
 			ChatID:      chatID,
@@ -587,7 +587,7 @@ func NewEditMessageTextAndMarkup(chatID string, messageID int, text string, repl
 }
 
 // NewEditMessageCaption allows you to edit the caption of a message.
-func NewEditMessageCaption(chatID string, messageID int, caption string) EditMessageCaptionConfig {
+func NewEditMessageCaption(chatID string, messageID string, caption string) EditMessageCaptionConfig {
 	return EditMessageCaptionConfig{
 		BaseEdit: BaseEdit{
 			ChatID:    chatID,
@@ -599,7 +599,7 @@ func NewEditMessageCaption(chatID string, messageID int, caption string) EditMes
 
 // NewEditMessageReplyMarkup allows you to edit the inline
 // keyboard markup.
-func NewEditMessageReplyMarkup(chatID string, messageID int, replyMarkup InlineKeyboardMarkup) EditMessageReplyMarkupConfig {
+func NewEditMessageReplyMarkup(chatID string, messageID string, replyMarkup InlineKeyboardMarkup) EditMessageReplyMarkupConfig {
 	return EditMessageReplyMarkupConfig{
 		BaseEdit: BaseEdit{
 			ChatID:      chatID,
@@ -825,7 +825,7 @@ func NewPoll(chatID string, question string, options ...string) SendPollConfig {
 }
 
 // NewStopPoll allows you to stop a poll.
-func NewStopPoll(chatID string, messageID int) StopPollConfig {
+func NewStopPoll(chatID string, messageID string) StopPollConfig {
 	return StopPollConfig{
 		BaseEdit{
 			ChatID:    chatID,

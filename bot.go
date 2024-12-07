@@ -100,7 +100,6 @@ func (bot *BotAPI) MakeRequest(endpoint string, params Params) (*APIResponse, er
 	method := fmt.Sprintf(bot.apiEndpoint, bot.Token, endpoint)
 
 	values := buildParams(params)
-
 	req, err := http.NewRequest("POST", method, strings.NewReader(values.Encode()))
 	if err != nil {
 		return &APIResponse{}, err
@@ -155,7 +154,6 @@ func (bot *BotAPI) decodeAPIResponse(responseBody io.Reader, resp *APIResponse) 
 	if err != nil {
 		return nil, err
 	}
-
 	err = json.Unmarshal(data, resp)
 	if err != nil {
 		return nil, err
@@ -332,7 +330,6 @@ func (bot *BotAPI) Request(c Chattable) (*APIResponse, error) {
 			params[file.Name] = file.Data.SendData()
 		}
 	}
-
 	return bot.MakeRequest(c.method(), params)
 }
 
