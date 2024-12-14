@@ -1426,7 +1426,34 @@ type InlineKeyboardButton struct {
 	//
 	// optional
 	Pay bool `json:"pay,omitempty"`
+
+	Style ButtonStyle     `json:"style,omitempty"`
+	Emoji *ComponentEmoji `json:"emoji,omitempty"`
 }
+
+// ComponentEmoji represents button emoji, if it does have one.
+type ComponentEmoji struct {
+	Name     string `json:"name,omitempty"`
+	ID       string `json:"id,omitempty"`
+	Animated bool   `json:"animated,omitempty"`
+}
+
+// ButtonStyle is style of button.
+type ButtonStyle uint
+
+// Button styles.
+const (
+	// PrimaryButton is a button with blurple color.
+	PrimaryButton ButtonStyle = 1
+	// SecondaryButton is a button with grey color.
+	SecondaryButton ButtonStyle = 2
+	// SuccessButton is a button with green color.
+	SuccessButton ButtonStyle = 3
+	// DangerButton is a button with red color.
+	DangerButton ButtonStyle = 4
+	// LinkButton is a special type of button which navigates to a URL. Has grey color.
+	LinkButton ButtonStyle = 5
+)
 
 // LoginURL represents a parameter of the inline keyboard button used to
 // automatically authorize a user. Serves as a great replacement for the
