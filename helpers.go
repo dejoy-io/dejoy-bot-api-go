@@ -898,7 +898,7 @@ func NewBotCommandScopeChatAdministrators(chatID string) BotCommandScope {
 
 // NewBotCommandScopeChatMember represents the scope of bot commands, covering a
 // specific member of a group or supergroup chat.
-func NewBotCommandScopeChatMember(chatID string, userID int64) BotCommandScope {
+func NewBotCommandScopeChatMember(chatID string, userID string) BotCommandScope {
 	return BotCommandScope{
 		Type:   "chat_member",
 		ChatID: chatID,

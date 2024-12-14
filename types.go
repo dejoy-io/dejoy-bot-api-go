@@ -1852,6 +1852,16 @@ type BotCommand struct {
 	Command string `json:"command"`
 	// Description of the command, 3-256 characters.
 	Description string `json:"description"`
+
+	Type    string          `json:"type"` // 命令类型，值可为: chat、user、message。
+	Options []CommandOption `json:"options"`
+}
+
+type CommandOption struct {
+	Name        string `json:"name"`
+	Type        string `json:"type"` // 如: string, integer等
+	Required    bool   `json:"required"`
+	Description string `json:"description"`
 }
 
 // BotCommandScope represents the scope to which bot commands are applied.
@@ -1861,7 +1871,7 @@ type BotCommand struct {
 type BotCommandScope struct {
 	Type   string `json:"type"`
 	ChatID string `json:"chat_id,omitempty"`
-	UserID int64  `json:"user_id,omitempty"`
+	UserID string `json:"user_id,omitempty"`
 }
 
 // MenuButton describes the bot's menu button in a private chat.
