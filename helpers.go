@@ -18,7 +18,7 @@ func NewMessage(chatID string, text string) MessageConfig {
 	return MessageConfig{
 		BaseChat: BaseChat{
 			ChatID:           chatID,
-			ReplyToMessageID: "0",
+			ReplyToMessageID: "",
 		},
 		Text:                  text,
 		DisableWebPagePreview: false,
