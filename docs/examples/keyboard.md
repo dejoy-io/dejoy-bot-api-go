@@ -10,7 +10,7 @@ import (
 	"log"
 	"os"
 
-	djbotapi "github.com/dejoy-io/dejoy-bot-api"
+	djbotapi "github.com/dejoy-io/dejoy-bot-api-go"
 )
 
 var numericKeyboard = djbotapi.NewReplyKeyboard(

@@ -30,7 +30,7 @@ package main
 import (
 	"os"
 
-	djbotapi "github.com/dejoy-io/dejoy-bot-api"
+	djbotapi "github.com/dejoy-io/dejoy-bot-api-go"
 )
 
 func main() {
